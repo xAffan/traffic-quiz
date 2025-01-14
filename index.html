@@ -1,10 +1,9 @@
-.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traffic Rules Quiz</title>
+    <title>Traffic Rules Quiz (Pakistan)</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -61,34 +60,120 @@
 </head>
 <body>
     <div class="quiz-container">
-        <h1>Traffic Rules Quiz</h1>
+        <h1>Traffic Rules Quiz (Pakistan)</h1>
         <div class="score-display">
             Score: <span id="score">0</span> / <span id="total">0</span>
         </div>
         <div id="quiz"></div>
-        <button id="submit" style="display:none;">Submit Quiz</button>
+        <button id="submit">Check Answers</button>
     </div>
 
     <script>
         const questions = [
             {
-                question: "What does a red traffic light mean?",
-                options: ["Stop completely", "Slow down", "Speed up", "Turn right"],
+                question: "What does a red traffic light indicate?",
+                options: ["Stop completely", "Slow down slightly", "Turn left only", "Honk and proceed"],
                 correct: 0
             },
             {
-                question: "What is the default speed limit in residential areas?",
-                options: ["20 mph", "30 mph", "40 mph", "50 mph"],
+                question: "What is the default speed limit in urban areas (Pakistan)?",
+                options: ["40 km/h", "50 km/h", "60 km/h", "80 km/h"],
+                correct: 2
+            },
+            {
+                question: "What shape is a standard stop sign?",
+                options: ["Circle", "Triangle", "Rectangle", "Octagon"],
+                correct: 3
+            },
+            {
+                question: "At a zebra crossing, you should:",
+                options: ["Stop to let pedestrians cross", "Honk and continue", "Ignore if in a hurry", "Speed up"],
+                correct: 0
+            },
+            {
+                question: "When turning right at a green light, you must:",
+                options: ["Yield to oncoming traffic", "Drive fast to beat traffic", "Honk for right of way", "Only turn when no cars are behind"],
+                correct: 0
+            },
+            {
+                question: "The maximum speed limit on most motorways in Pakistan is:",
+                options: ["80 km/h", "100 km/h", "120 km/h", "140 km/h"],
+                correct: 2
+            },
+            {
+                question: "Yellow light means:",
+                options: ["Prepare to stop", "Ignore and proceed", "Only turn left", "Pedestrians must go"],
+                correct: 0
+            },
+            {
+                question: "When changing lanes on a highway, you should:",
+                options: ["Signal and check mirrors", "Swerve quickly", "Honk continuously", "Speed up without looking"],
+                correct: 0
+            },
+            {
+                question: "On a roundabout, priority is given to:",
+                options: ["Vehicles already in the roundabout", "Vehicles entering from the left", "No one, it's a free-for-all", "Fastest cars first"],
+                correct: 0
+            },
+            {
+                question: "Driving without fastening seat belts is:",
+                options: ["Safe at low speed", "Against the law", "Recommended on highways", "Optional for front seat"],
                 correct: 1
             },
             {
-                question: "What shape is a stop sign?",
-                options: ["Circle", "Triangle", "Rectangle", "Octagon"],
-                correct: 3
+                question: "A diamond-shaped road sign usually indicates:",
+                options: ["Warning or hazard", "Mandatory action", "Service area", "Speed zone"],
+                correct: 0
+            },
+            {
+                question: "If an ambulance approaches with sirens on, you must:",
+                options: ["Give way immediately", "Race it to the next signal", "Ignore if you're in a hurry", "Stop in the middle of the road"],
+                correct: 0
+            },
+            {
+                question: "In poor visibility conditions (fog), you should:",
+                options: ["Use low beam headlights", "Use high beams continuously", "Turn lights off to save battery", "Drive faster to clear fog"],
+                correct: 0
+            },
+            {
+                question: "Before opening your car door on a busy road, you should:",
+                options: ["Check side mirrors and blind spot", "Open quickly without looking", "Honk before opening", "Wait for someone to pass you"],
+                correct: 0
+            },
+            {
+                question: "Tailgating (driving very close) to the vehicle ahead is:",
+                options: ["Dangerous and discouraged", "A good way to save fuel", "Required on narrow roads", "Mandatory in heavy traffic"],
+                correct: 0
+            },
+            {
+                question: "When can you overtake another vehicle on the left side?",
+                options: ["Generally never in Pakistan", "Only when the driver in front signals right", "You feel they are driving slowly", "You have a better car"],
+                correct: 1
+            },
+            {
+                question: "A 'No U-turn' sign indicates:",
+                options: ["You cannot make a U-turn", "You can stop anytime", "You must turn around at will", "Turn only if traffic is clear"],
+                correct: 0
+            },
+            {
+                question: "You should always use your indicator when:",
+                options: ["Turning or changing lanes", "The street is empty", "You don't feel like it", "Traffic signals are working"],
+                correct: 0
+            },
+            {
+                question: "Driving under the influence of alcohol in Pakistan is:",
+                options: ["Illegal and punishable", "Permitted in rural areas only", "Allowed if window is open", "Fine if you drive slowly"],
+                correct: 0
+            },
+            {
+                question: "If you hear a strange noise from your vehicle on a highway, you must:",
+                options: ["Pull over safely and inspect", "Ignore and continue your journey", "Drive faster to reduce noise", "Stop in the middle of the road"],
+                correct: 0
             }
         ];
 
         let score = 0;
+        const userAnswers = new Array(questions.length).fill(null);
         const quizContainer = document.getElementById('quiz');
         const scoreDisplay = document.getElementById('score');
         const totalDisplay = document.getElementById('total');
@@ -99,7 +184,6 @@
         questions.forEach((q, qIndex) => {
             const questionCard = document.createElement('div');
             questionCard.className = 'question-card';
-            
             questionCard.innerHTML = `
                 <h3>Question ${qIndex + 1}: ${q.question}</h3>
                 <div class="options">
@@ -113,27 +197,35 @@
             quizContainer.appendChild(questionCard);
         });
 
-        function selectOption(questionIndex, optionIndex) {
-            const question = questions[questionIndex];
+        window.selectOption = function(questionIndex, optionIndex) {
+            userAnswers[questionIndex] = optionIndex;
             const buttons = document.querySelectorAll(`[id^="q${questionIndex}o"]`);
-            
             buttons.forEach(btn => {
-                btn.classList.remove('selected', 'correct', 'incorrect');
+                btn.classList.remove('selected');
             });
+            document.getElementById(`q${questionIndex}o${optionIndex}`).classList.add('selected');
+        };
 
-            const selectedButton = document.getElementById(`q${questionIndex}o${optionIndex}`);
-            selectedButton.classList.add('selected');
-
-            if (optionIndex === question.correct) {
-                selectedButton.classList.add('correct');
-                score++;
-            } else {
-                selectedButton.classList.add('incorrect');
-                document.getElementById(`q${questionIndex}o${question.correct}`).classList.add('correct');
-            }
-
+        submitButton.addEventListener('click', () => {
+            score = 0;
+            questions.forEach((q, questionIndex) => {
+                const correctOption = q.correct;
+                const buttons = document.querySelectorAll(`[id^="q${questionIndex}o"]`);
+                buttons.forEach((btn, i) => {
+                    btn.classList.remove('correct', 'incorrect', 'selected');
+                    if (i === correctOption) {
+                        btn.classList.add('correct');
+                    }
+                    if (userAnswers[questionIndex] === i && i !== correctOption) {
+                        btn.classList.add('incorrect');
+                    }
+                });
+                if (userAnswers[questionIndex] === correctOption) {
+                    score++;
+                }
+            });
             scoreDisplay.textContent = score;
-        }
+        });
     </script>
 </body>
 </html>
