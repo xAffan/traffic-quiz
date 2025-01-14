@@ -1,1 +1,139 @@
-Hello!
+.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Rules Quiz</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background: #f0f2f5;
+        }
+        .quiz-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .question-card {
+            margin-bottom: 1.5rem;
+        }
+        .options {
+            display: grid;
+            gap: 0.5rem;
+        }
+        button {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #f0f0f0;
+        }
+        .selected {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+        .correct {
+            background: #c8e6c9;
+            border-color: #4caf50;
+        }
+        .incorrect {
+            background: #ffcdd2;
+            border-color: #f44336;
+        }
+        .score-display {
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #e3f2fd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Traffic Rules Quiz</h1>
+        <div class="score-display">
+            Score: <span id="score">0</span> / <span id="total">0</span>
+        </div>
+        <div id="quiz"></div>
+        <button id="submit" style="display:none;">Submit Quiz</button>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What does a red traffic light mean?",
+                options: ["Stop completely", "Slow down", "Speed up", "Turn right"],
+                correct: 0
+            },
+            {
+                question: "What is the default speed limit in residential areas?",
+                options: ["20 mph", "30 mph", "40 mph", "50 mph"],
+                correct: 1
+            },
+            {
+                question: "What shape is a stop sign?",
+                options: ["Circle", "Triangle", "Rectangle", "Octagon"],
+                correct: 3
+            }
+        ];
+
+        let score = 0;
+        const quizContainer = document.getElementById('quiz');
+        const scoreDisplay = document.getElementById('score');
+        const totalDisplay = document.getElementById('total');
+        const submitButton = document.getElementById('submit');
+
+        totalDisplay.textContent = questions.length;
+
+        questions.forEach((q, qIndex) => {
+            const questionCard = document.createElement('div');
+            questionCard.className = 'question-card';
+            
+            questionCard.innerHTML = `
+                <h3>Question ${qIndex + 1}: ${q.question}</h3>
+                <div class="options">
+                    ${q.options.map((opt, i) => `
+                        <button onclick="selectOption(${qIndex}, ${i})" id="q${qIndex}o${i}">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+            quizContainer.appendChild(questionCard);
+        });
+
+        function selectOption(questionIndex, optionIndex) {
+            const question = questions[questionIndex];
+            const buttons = document.querySelectorAll(`[id^="q${questionIndex}o"]`);
+            
+            buttons.forEach(btn => {
+                btn.classList.remove('selected', 'correct', 'incorrect');
+            });
+
+            const selectedButton = document.getElementById(`q${questionIndex}o${optionIndex}`);
+            selectedButton.classList.add('selected');
+
+            if (optionIndex === question.correct) {
+                selectedButton.classList.add('correct');
+                score++;
+            } else {
+                selectedButton.classList.add('incorrect');
+                document.getElementById(`q${questionIndex}o${question.correct}`).classList.add('correct');
+            }
+
+            scoreDisplay.textContent = score;
+        }
+    </script>
+</body>
+</html>
