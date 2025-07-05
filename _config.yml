@@ -1,0 +1,43 @@
+# Site settings
+title: Traffic Safety Hub
+description: Learn traffic safety through interactive quizzes and expert tips
+baseurl: ""
+url: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title/
+  quizzes:
+    output: true
+    permalink: /quiz/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "quizzes"
+    values:
+      layout: "quiz"
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

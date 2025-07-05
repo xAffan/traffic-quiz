@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<article class="post-container">
+    <div class="container">
+        <header class="post-header">
+            <div class="post-meta">
+                <span class="post-date">
+                    <i class="far fa-calendar"></i>
+                    {{ page.date | date: "%B %d, %Y" }}
+                </span>
+                {% if page.author %}
+                <span class="post-author">
+                    <i class="far fa-user"></i>
+                    {{ page.author }}
+                </span>
+                {% endif %}
+                {% if page.reading_time %}
+                <span class="reading-time">
+                    <i class="far fa-clock"></i>
+                    {{ page.reading_time }} min read
+                </span>
+                {% endif %}
+            </div>
+            <h1 class="post-title">{{ page.title }}</h1>
+            {% if page.subtitle %}
+            <p class="post-subtitle">{{ page.subtitle }}</p>
+            {% endif %}
+            {% if page.featured_image %}
+            <div class="post-image">
+                <img src="{{ page.featured_image | relative_url }}" alt="{{ page.title }}">
+            </div>
+            {% endif %}
+        </header>
+
+        <div class="post-content">
+            {{ content }}
+        </div>
+
+        <footer class="post-footer">
+            {% if page.tags %}
+            <div class="post-tags">
+                <h4>Tags:</h4>
+                {% for tag in page.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <div class="post-navigation">
+                {% if page.previous %}
+                <a href="{{ page.previous.url | relative_url }}" class="nav-prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>{{ page.previous.title | truncate: 30 }}</span>
+                </a>
+                {% endif %}
+                {% if page.next %}
+                <a href="{{ page.next.url | relative_url }}" class="nav-next">
+                    <span>{{ page.next.title | truncate: 30 }}</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                {% endif %}
+            </div>
+        </footer>
+    </div>
+</article>

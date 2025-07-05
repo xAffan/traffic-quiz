@@ -1,0 +1,90 @@
+---
+layout: default
+---
+
+<div class="quiz-container">
+    <div class="container">
+        <header class="quiz-header">
+            <h1 class="quiz-title">{{ page.title }}</h1>
+            {% if page.description %}
+            <p class="quiz-description">{{ page.description }}</p>
+            {% endif %}
+            <div class="quiz-info">
+                <span class="quiz-questions">
+                    <i class="fas fa-question-circle"></i>
+                    <span id="total-questions">{{ page.questions.size }}</span> Questions
+                </span>
+                <span class="quiz-difficulty {{ page.difficulty | default: 'medium' }}">
+                    <i class="fas fa-star"></i>
+                    {{ page.difficulty | default: 'Medium' | capitalize }}
+                </span>
+            </div>
+        </header>
+
+        <div class="quiz-content">
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text">
+                    <span id="current-question">1</span> of <span id="total-q">{{ page.questions.size }}</span>
+                </span>
+            </div>
+
+            <div class="quiz-questions" id="quiz-questions">
+                <!-- Questions will be loaded here by JavaScript -->
+            </div>
+
+            <div class="quiz-controls">
+                <button class="btn btn-secondary" id="prev-btn" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="btn btn-primary" id="next-btn">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-success" id="submit-btn" style="display: none;">
+                    <i class="fas fa-check"></i> Submit Quiz
+                </button>
+            </div>
+        </div>
+
+        <div class="quiz-results" id="quiz-results" style="display: none;">
+            <div class="results-header">
+                <h2>Quiz Complete!</h2>
+                <div class="score-circle">
+                    <div class="score-number" id="score-percentage">0%</div>
+                    <div class="score-text">Score</div>
+                </div>
+            </div>
+            <div class="results-details">
+                <p id="results-message"></p>
+                <div class="results-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="correct-answers">0</span>
+                        <span class="stat-label">Correct</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="incorrect-answers">0</span>
+                        <span class="stat-label">Incorrect</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="location.reload()">
+                    <i class="fas fa-redo"></i> Retake Quiz
+                </button>
+                <a href="{{ '/quizzes/' | relative_url }}" class="btn btn-secondary">
+                    <i class="fas fa-list"></i> More Quizzes
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Quiz data from Jekyll
+const quizData = {
+    title: "{{ page.title }}",
+    questions: {{ page.questions | jsonify }}
+};
+
+// Quiz JavaScript will be loaded from main.js
+</script>
