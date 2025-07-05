@@ -6,11 +6,11 @@ description: Test your traffic safety knowledge and learn essential driving tips
 
 <section class="hero">
     <div class="container">
-        <h1>🚦 Master Traffic Safety</h1>
-        <p>Test your knowledge, learn essential tips, and become a safer driver through interactive quizzes and expert guidance.</p>
+        <h1>🚦 Traffic Safety Hub</h1>
+        <p>Test your knowledge of traffic rules and learn essential driving tips to become a safer, more confident driver on the road.</p>
         <div class="hero-actions">
-            <a href="{{ '/quizzes/basic-traffic-rules/' | relative_url }}" class="btn btn-primary">Take a Quiz</a>
-            <a href="{{ '/blog/' | relative_url }}" class="btn btn-outline">Read Safety Tips</a>
+            <a href="{{ '/quiz/' | relative_url }}" class="btn btn-primary">Start Quiz</a>
+            <a href="{{ '/about/' | relative_url }}" class="btn btn-outline">Learn More</a>
         </div>
     </div>
 </section>

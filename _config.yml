@@ -1,8 +1,8 @@
 # Site settings
 title: Traffic Safety Hub
 description: Learn traffic safety through interactive quizzes and expert tips
-baseurl: ""
-url: ""
+baseurl: "/traffic-quiz"
+url: "https://xaffan.github.io"
 
 # Build settings
 markdown: kramdown

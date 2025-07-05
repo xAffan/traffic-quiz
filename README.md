@@ -130,7 +130,5 @@ Feel free to **fork** the repo and submit a PR with improvements, new quizzes, o
 
 ---
 
-**Built with ❤️ for road safety education**
-
-Made with ❤️ using **HTML, CSS, and JavaScript**.  
+Made with ❤️ using **Jekyll, HTML, CSS, and JavaScript**.  
 Stay safe on the roads! 🚦  
