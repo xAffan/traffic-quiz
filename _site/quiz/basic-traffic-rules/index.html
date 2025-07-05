@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Traffic Rules Quiz | Traffic Safety Hub</title>
+    <meta name="description" content="Test your knowledge of fundamental traffic rules and road signs">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/traffic-quiz/assets/css/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚦</text></svg>">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="/traffic-quiz/">
+                    <i class="fas fa-traffic-light"></i>
+                    Traffic Safety Hub
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="/traffic-quiz/" class="nav-link">Home</a>
+                <a href="/traffic-quiz/quizzes/" class="nav-link">Quizzes</a>
+                <a href="/traffic-quiz/blog/" class="nav-link">Safety Blog</a>
+                <a href="/traffic-quiz/about/" class="nav-link">About</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="quiz-container">
+    <div class="container">
+        <header class="quiz-header">
+            <h1 class="quiz-title">Basic Traffic Rules Quiz</h1>
+            
+            <p class="quiz-description">Test your knowledge of fundamental traffic rules and road signs</p>
+            
+            <div class="quiz-info">
+                <span class="quiz-questions">
+                    <i class="fas fa-question-circle"></i>
+                    <span id="total-questions">10</span> Questions
+                </span>
+                <span class="quiz-difficulty easy">
+                    <i class="fas fa-star"></i>
+                    Easy
+                </span>
+            </div>
+        </header>
+
+        <div class="quiz-content">
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text">
+                    <span id="current-question">1</span> of <span id="total-q">10</span>
+                </span>
+            </div>
+
+            <div class="quiz-questions" id="quiz-questions">
+                <!-- Questions will be loaded here by JavaScript -->
+            </div>
+
+            <div class="quiz-controls">
+                <button class="btn btn-secondary" id="prev-btn" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="btn btn-primary" id="next-btn">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-success" id="submit-btn" style="display: none;">
+                    <i class="fas fa-check"></i> Submit Quiz
+                </button>
+            </div>
+        </div>
+
+        <div class="quiz-results" id="quiz-results" style="display: none;">
+            <div class="results-header">
+                <h2>Quiz Complete!</h2>
+                <div class="score-circle">
+                    <div class="score-number" id="score-percentage">0%</div>
+                    <div class="score-text">Score</div>
+                </div>
+            </div>
+            <div class="results-details">
+                <p id="results-message"></p>
+                <div class="results-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="correct-answers">0</span>
+                        <span class="stat-label">Correct</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="incorrect-answers">0</span>
+                        <span class="stat-label">Incorrect</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="location.reload()">
+                    <i class="fas fa-redo"></i> Retake Quiz
+                </button>
+                <a href="/traffic-quiz/quizzes/" class="btn btn-secondary">
+                    <i class="fas fa-list"></i> More Quizzes
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Quiz data from Jekyll
+const quizData = {
+    title: "Basic Traffic Rules Quiz",
+    questions: [{"question":"What does a red traffic light mean?","options":["Stop completely","Slow down and proceed with caution","Yield to oncoming traffic","Stop only if pedestrians are present"],"correct":0,"explanation":"A red traffic light means you must come to a complete stop and wait until the light turns green."},{"question":"When should you use your turn signals?","options":["Only when changing lanes on highways","Only when turning at intersections","Before any turn, lane change, or when pulling over","Only when other vehicles are nearby"],"correct":2,"explanation":"Turn signals should be used before any turn, lane change, or when pulling over to communicate your intentions to other drivers."},{"question":"What is the proper following distance in normal conditions?","options":["1 second behind the vehicle ahead","2 seconds behind the vehicle ahead","3 seconds behind the vehicle ahead","5 seconds behind the vehicle ahead"],"correct":2,"explanation":"The 3-second rule is recommended for normal driving conditions. This gives you adequate time to react if the vehicle ahead stops suddenly."},{"question":"When approaching a yield sign, you should:","options":["Always come to a complete stop","Slow down and yield to traffic that has the right-of-way","Proceed at normal speed","Sound your horn to alert other drivers"],"correct":1,"explanation":"A yield sign means you must slow down and give the right-of-way to other traffic and pedestrians."},{"question":"What should you do when you see an ambulance with flashing lights behind you?","options":["Speed up to get out of the way","Stop immediately wherever you are","Pull over to the right side of the road and stop","Continue driving at the same speed"],"correct":2,"explanation":"When an emergency vehicle approaches with lights and sirens, pull over to the right side of the road and stop until it passes."},{"question":"The speed limit in a school zone is typically:","options":["The same as the regular speed limit","Reduced by 10 mph from the regular limit","25 mph or as posted","35 mph maximum"],"correct":2,"explanation":"School zones typically have reduced speed limits, often 25 mph or as specifically posted, to protect children."},{"question":"You should check your blind spots:","options":["Only when changing lanes","Before every turn and lane change","Only when merging onto highways","Once every few minutes while driving"],"correct":1,"explanation":"Always check your blind spots before making any turn or lane change to ensure no vehicles are in your path."},{"question":"When parking uphill with a curb, you should:","options":["Turn wheels toward the curb","Turn wheels away from the curb","Keep wheels straight","It doesn't matter which direction"],"correct":1,"explanation":"When parking uphill with a curb, turn your wheels away from the curb so the vehicle won't roll into traffic if the brakes fail."},{"question":"A solid yellow line on your side of the center line means:","options":["Passing is allowed","Passing is not allowed","Passing is allowed only during daylight hours","Passing is allowed if no oncoming traffic is visible"],"correct":1,"explanation":"A solid yellow line on your side means you cannot pass. Only pass when there's a broken yellow line on your side."},{"question":"When should you use headlights?","options":["Only at night","During rain, fog, or low visibility conditions","From sunset to sunrise and during poor visibility","Only when required by law"],"correct":2,"explanation":"Use headlights from sunset to sunrise and any time visibility is reduced due to weather or other conditions."}]
+};
+
+// Quiz JavaScript will be loaded from main.js
+</script>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-traffic-light"></i> Traffic Safety Hub</h3>
+                    <p>Learn traffic safety through interactive quizzes and educational content. Practice safe driving habits and test your knowledge.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/traffic-quiz/quizzes/">Take a Quiz</a></li>
+                        <li><a href="/traffic-quiz/blog/">Safety Tips</a></li>
+                        <li><a href="/traffic-quiz/about/">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Safety Topics</h4>
+                    <ul>
+                        <li><a href="/traffic-quiz/blog/defensive-driving-tips/">Defensive Driving</a></li>
+                        <li><a href="/traffic-quiz/blog/road-signs-guide/">Road Signs</a></li>
+                        <li><a href="/traffic-quiz/blog/winter-driving-safety/">Weather Safety</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Traffic Safety Hub. Educational content for safer driving.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/traffic-quiz/assets/js/main.js"></script>
+</body>
+</html>

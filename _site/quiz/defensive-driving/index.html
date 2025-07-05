@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defensive Driving Quiz | Traffic Safety Hub</title>
+    <meta name="description" content="Test your knowledge of defensive driving techniques and hazard awareness">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/traffic-quiz/assets/css/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚦</text></svg>">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="/traffic-quiz/">
+                    <i class="fas fa-traffic-light"></i>
+                    Traffic Safety Hub
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="/traffic-quiz/" class="nav-link">Home</a>
+                <a href="/traffic-quiz/quizzes/" class="nav-link">Quizzes</a>
+                <a href="/traffic-quiz/blog/" class="nav-link">Safety Blog</a>
+                <a href="/traffic-quiz/about/" class="nav-link">About</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="quiz-container">
+    <div class="container">
+        <header class="quiz-header">
+            <h1 class="quiz-title">Defensive Driving Quiz</h1>
+            
+            <p class="quiz-description">Test your knowledge of defensive driving techniques and hazard awareness</p>
+            
+            <div class="quiz-info">
+                <span class="quiz-questions">
+                    <i class="fas fa-question-circle"></i>
+                    <span id="total-questions">10</span> Questions
+                </span>
+                <span class="quiz-difficulty medium">
+                    <i class="fas fa-star"></i>
+                    Medium
+                </span>
+            </div>
+        </header>
+
+        <div class="quiz-content">
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text">
+                    <span id="current-question">1</span> of <span id="total-q">10</span>
+                </span>
+            </div>
+
+            <div class="quiz-questions" id="quiz-questions">
+                <!-- Questions will be loaded here by JavaScript -->
+            </div>
+
+            <div class="quiz-controls">
+                <button class="btn btn-secondary" id="prev-btn" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="btn btn-primary" id="next-btn">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-success" id="submit-btn" style="display: none;">
+                    <i class="fas fa-check"></i> Submit Quiz
+                </button>
+            </div>
+        </div>
+
+        <div class="quiz-results" id="quiz-results" style="display: none;">
+            <div class="results-header">
+                <h2>Quiz Complete!</h2>
+                <div class="score-circle">
+                    <div class="score-number" id="score-percentage">0%</div>
+                    <div class="score-text">Score</div>
+                </div>
+            </div>
+            <div class="results-details">
+                <p id="results-message"></p>
+                <div class="results-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="correct-answers">0</span>
+                        <span class="stat-label">Correct</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="incorrect-answers">0</span>
+                        <span class="stat-label">Incorrect</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="location.reload()">
+                    <i class="fas fa-redo"></i> Retake Quiz
+                </button>
+                <a href="/traffic-quiz/quizzes/" class="btn btn-secondary">
+                    <i class="fas fa-list"></i> More Quizzes
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Quiz data from Jekyll
+const quizData = {
+    title: "Defensive Driving Quiz",
+    questions: [{"question":"What is the most important principle of defensive driving?","options":["Driving as fast as safely possible","Anticipating potential hazards and being prepared to react","Following traffic rules exactly","Using advanced driving techniques"],"correct":1,"explanation":"Defensive driving is primarily about anticipating potential problems and being prepared to react safely to avoid accidents."},{"question":"When should you increase your following distance?","options":["Only in heavy traffic","In poor weather, heavy traffic, or when visibility is reduced","Only when driving at night","Only on highways"],"correct":1,"explanation":"Increase following distance in poor weather, heavy traffic, at night, or any time conditions make it harder to stop quickly."},{"question":"What should you do if you see a vehicle weaving between lanes?","options":["Speed up to pass them quickly","Maintain your position and stay alert","Increase distance and avoid being next to them","Flash your lights to warn them"],"correct":2,"explanation":"Keep a safe distance from erratic drivers and avoid being alongside them. They may be impaired or distracted."},{"question":"The best way to handle an aggressive driver is to:","options":["Respond aggressively to show you won't be intimidated","Avoid eye contact and give them plenty of space","Speed up to get away from them","Use hand gestures to communicate"],"correct":1,"explanation":"Don't engage with aggressive drivers. Avoid eye contact, give them space, and don't take their behavior personally."},{"question":"When scanning for hazards, you should look:","options":["Only at the vehicle directly in front of you","12-15 seconds ahead in the city, 20-30 seconds on highways","Just far enough to see the next traffic light","Only in your mirrors"],"correct":1,"explanation":"Scan 12-15 seconds ahead in city driving and 20-30 seconds on highways to identify potential hazards early."},{"question":"If your vehicle starts to skid, you should:","options":["Brake hard immediately","Steer in the opposite direction of the skid","Steer gently in the direction you want to go","Accelerate to regain control"],"correct":2,"explanation":"If skidding, ease off the gas and steer gently in the direction you want the front of the car to go."},{"question":"The safest position in traffic is:","options":["In the center of a group of vehicles","At the front of a group of vehicles","Away from clusters of vehicles when possible","Close behind a large truck"],"correct":2,"explanation":"Stay away from clusters of vehicles when possible to give yourself more escape routes and reaction time."},{"question":"When entering a highway, you should:","options":["Stop at the end of the acceleration lane","Match the speed of highway traffic before merging","Enter slowly and let others adjust to you","Use the shoulder to gain extra speed"],"correct":1,"explanation":"Use the acceleration lane to match highway speed, then merge smoothly when there's a safe gap."},{"question":"If you're being tailgated, you should:","options":["Speed up to create distance","Brake suddenly to teach them a lesson","Slow down gradually and let them pass","Change lanes abruptly"],"correct":2,"explanation":"If tailgated, gradually reduce speed to encourage the driver to pass, or change lanes when safe to do so."},{"question":"The most dangerous time to drive is:","options":["During rush hour","Late at night on weekends","Early morning hours","During heavy rain"],"correct":1,"explanation":"Late night weekend hours have the highest accident rates due to factors like impaired driving and fatigue."}]
+};
+
+// Quiz JavaScript will be loaded from main.js
+</script>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-traffic-light"></i> Traffic Safety Hub</h3>
+                    <p>Learn traffic safety through interactive quizzes and educational content. Practice safe driving habits and test your knowledge.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/traffic-quiz/quizzes/">Take a Quiz</a></li>
+                        <li><a href="/traffic-quiz/blog/">Safety Tips</a></li>
+                        <li><a href="/traffic-quiz/about/">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Safety Topics</h4>
+                    <ul>
+                        <li><a href="/traffic-quiz/blog/defensive-driving-tips/">Defensive Driving</a></li>
+                        <li><a href="/traffic-quiz/blog/road-signs-guide/">Road Signs</a></li>
+                        <li><a href="/traffic-quiz/blog/winter-driving-safety/">Weather Safety</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Traffic Safety Hub. Educational content for safer driving.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/traffic-quiz/assets/js/main.js"></script>
+</body>
+</html>

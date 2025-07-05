@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Driving Conditions Quiz | Traffic Safety Hub</title>
+    <meta name="description" content="Test your knowledge of safe driving techniques in various weather conditions">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/traffic-quiz/assets/css/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚦</text></svg>">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="/traffic-quiz/">
+                    <i class="fas fa-traffic-light"></i>
+                    Traffic Safety Hub
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="/traffic-quiz/" class="nav-link">Home</a>
+                <a href="/traffic-quiz/quizzes/" class="nav-link">Quizzes</a>
+                <a href="/traffic-quiz/blog/" class="nav-link">Safety Blog</a>
+                <a href="/traffic-quiz/about/" class="nav-link">About</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="quiz-container">
+    <div class="container">
+        <header class="quiz-header">
+            <h1 class="quiz-title">Weather Driving Conditions Quiz</h1>
+            
+            <p class="quiz-description">Test your knowledge of safe driving techniques in various weather conditions</p>
+            
+            <div class="quiz-info">
+                <span class="quiz-questions">
+                    <i class="fas fa-question-circle"></i>
+                    <span id="total-questions">10</span> Questions
+                </span>
+                <span class="quiz-difficulty medium">
+                    <i class="fas fa-star"></i>
+                    Medium
+                </span>
+            </div>
+        </header>
+
+        <div class="quiz-content">
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text">
+                    <span id="current-question">1</span> of <span id="total-q">10</span>
+                </span>
+            </div>
+
+            <div class="quiz-questions" id="quiz-questions">
+                <!-- Questions will be loaded here by JavaScript -->
+            </div>
+
+            <div class="quiz-controls">
+                <button class="btn btn-secondary" id="prev-btn" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="btn btn-primary" id="next-btn">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-success" id="submit-btn" style="display: none;">
+                    <i class="fas fa-check"></i> Submit Quiz
+                </button>
+            </div>
+        </div>
+
+        <div class="quiz-results" id="quiz-results" style="display: none;">
+            <div class="results-header">
+                <h2>Quiz Complete!</h2>
+                <div class="score-circle">
+                    <div class="score-number" id="score-percentage">0%</div>
+                    <div class="score-text">Score</div>
+                </div>
+            </div>
+            <div class="results-details">
+                <p id="results-message"></p>
+                <div class="results-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="correct-answers">0</span>
+                        <span class="stat-label">Correct</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="incorrect-answers">0</span>
+                        <span class="stat-label">Incorrect</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="location.reload()">
+                    <i class="fas fa-redo"></i> Retake Quiz
+                </button>
+                <a href="/traffic-quiz/quizzes/" class="btn btn-secondary">
+                    <i class="fas fa-list"></i> More Quizzes
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Quiz data from Jekyll
+const quizData = {
+    title: "Weather Driving Conditions Quiz",
+    questions: [{"question":"When driving in heavy rain, you should:","options":["Increase speed to get through it quickly","Use cruise control to maintain steady speed","Reduce speed and increase following distance","Drive in the left lane only"],"correct":2,"explanation":"In heavy rain, reduce speed, increase following distance, and avoid sudden movements that could cause hydroplaning."},{"question":"Hydroplaning occurs when:","options":["Your tires are over-inflated","Water builds up between tires and road surface","You drive too slowly in rain","Your windshield wipers are too fast"],"correct":1,"explanation":"Hydroplaning happens when water builds up between tires and road, causing loss of traction and control."},{"question":"If you start to hydroplane, you should:","options":["Brake firmly","Accelerate to regain traction","Ease off the gas and steer straight","Turn the wheel sharply"],"correct":2,"explanation":"If hydroplaning, ease off the gas, avoid sudden movements, and steer straight until you regain traction."},{"question":"In snowy conditions, the best way to stop is to:","options":["Pump the brakes rapidly","Apply steady, gentle pressure to brakes","Use the parking brake","Downshift and brake hard"],"correct":1,"explanation":"In snow, apply steady, gentle brake pressure. If you have ABS, let the system do the work. If not, pump gently."},{"question":"When driving in fog, you should:","options":["Use high beam headlights","Use low beam headlights and fog lights","Use only fog lights","Drive without lights to reduce glare"],"correct":1,"explanation":"In fog, use low beam headlights and fog lights. High beams reflect off fog and reduce visibility."},{"question":"Black ice is most likely to form:","options":["During heavy snowstorms","On bridges, overpasses, and shaded areas","Only on dirt roads","In the middle of sunny days"],"correct":1,"explanation":"Black ice typically forms on bridges, overpasses, and shaded areas where temperatures drop first."},{"question":"When driving in strong crosswinds, you should:","options":["Speed up to maintain control","Keep a firm grip on steering wheel and reduce speed","Drive in the center of your lane only","Use cruise control"],"correct":1,"explanation":"In strong winds, maintain a firm grip, reduce speed, and be prepared for sudden gusts that can push your vehicle."},{"question":"If you get stuck in snow, you should:","options":["Gun the engine to spin out","Rock the vehicle gently back and forth","Keep the wheels straight and floor it","Turn the wheels to full lock"],"correct":1,"explanation":"If stuck, rock gently between forward and reverse, using gradual acceleration to avoid spinning wheels."},{"question":"Winter tires should be used when temperatures are consistently below:","options":["32°F (0°C)","45°F (7°C)","25°F (-4°C)","50°F (10°C)"],"correct":1,"explanation":"Winter tires are designed for temperatures below 45°F (7°C) when regular tire rubber becomes less flexible."},{"question":"When driving in heavy snow, you should:","options":["Follow other vehicles closely for guidance","Use 4-wheel drive at high speeds","Increase following distance to 8-10 seconds","Drive only in the left lane"],"correct":2,"explanation":"In snow, dramatically increase following distance to 8-10 seconds to allow for longer stopping distances."}]
+};
+
+// Quiz JavaScript will be loaded from main.js
+</script>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-traffic-light"></i> Traffic Safety Hub</h3>
+                    <p>Learn traffic safety through interactive quizzes and educational content. Practice safe driving habits and test your knowledge.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/traffic-quiz/quizzes/">Take a Quiz</a></li>
+                        <li><a href="/traffic-quiz/blog/">Safety Tips</a></li>
+                        <li><a href="/traffic-quiz/about/">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Safety Topics</h4>
+                    <ul>
+                        <li><a href="/traffic-quiz/blog/defensive-driving-tips/">Defensive Driving</a></li>
+                        <li><a href="/traffic-quiz/blog/road-signs-guide/">Road Signs</a></li>
+                        <li><a href="/traffic-quiz/blog/winter-driving-safety/">Weather Safety</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Traffic Safety Hub. Educational content for safer driving.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/traffic-quiz/assets/js/main.js"></script>
+</body>
+</html>

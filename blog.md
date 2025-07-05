@@ -17,7 +17,10 @@ description: Expert tips, guides, and insights for safer driving
             <article class="blog-card">
                 {% if post.featured_image %}
                 <div class="blog-image">
-                    <img src="{{ post.featured_image | relative_url }}" alt="{{ post.title }}">
+                    <img src="{{ post.featured_image | relative_url }}" alt="{{ post.title }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div style="display:none; align-items:center; justify-content:center; font-size:3rem; height:200px; background:var(--light-bg);">
+                        {% if post.icon %}{{ post.icon }}{% else %}📰{% endif %}
+                    </div>
                 </div>
                 {% else %}
                 <div class="blog-image">
@@ -108,18 +111,5 @@ description: Expert tips, guides, and insights for safer driving
     <div class="container">
         <h2 class="text-center">Stay Updated</h2>
         <p class="text-center">Don't miss our latest safety tips and driving guides.</p>
-        
-        <div class="text-center">
-            <div style="max-width: 500px; margin: 0 auto; padding: 2rem; background: white; border-radius: 1rem; box-shadow: var(--shadow);">
-                <h3>📧 Subscribe to Our Newsletter</h3>
-                <p>Get weekly safety tips and new quiz notifications delivered to your inbox.</p>
-                <form style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                    <input type="email" placeholder="Enter your email" style="flex: 1; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 0.5rem;">
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-                <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 1rem;">We respect your privacy. Unsubscribe at any time.</p>
-            </div>
-        </div>
     </div>
 </section>
-</script>
