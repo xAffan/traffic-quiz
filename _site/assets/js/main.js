@@ -59,36 +59,67 @@ function initializeQuiz() {
 
     function showQuestion(index) {
         const question = quizData.questions[index];
+        const isAnswered = userAnswers[index] !== null;
         
         questionsContainer.innerHTML = `
             <div class="question-card fade-in-up">
                 <h3 class="question-title">${question.question}</h3>
                 <div class="options">
-                    ${question.options.map((option, optionIndex) => `
-                        <div class="option ${userAnswers[index] === optionIndex ? 'selected' : ''}" 
-                             data-option="${optionIndex}">
-                            ${option}
-                        </div>
-                    `).join('')}
+                    ${question.options.map((option, optionIndex) => {
+                        let optionClass = '';
+                        if (isAnswered) {
+                            if (optionIndex === question.correct) {
+                                optionClass = 'correct';
+                            } else if (optionIndex === userAnswers[index] && optionIndex !== question.correct) {
+                                optionClass = 'incorrect';
+                            }
+                        } else if (userAnswers[index] === optionIndex) {
+                            optionClass = 'selected';
+                        }
+                        
+                        return `
+                            <div class="option ${optionClass}" 
+                                 data-option="${optionIndex}"
+                                 ${isAnswered ? 'style="pointer-events: none;"' : ''}>
+                                ${option}
+                                ${isAnswered && optionIndex === question.correct ? '<i class="fas fa-check-circle"></i>' : ''}
+                                ${isAnswered && optionIndex === userAnswers[index] && optionIndex !== question.correct ? '<i class="fas fa-times-circle"></i>' : ''}
+                            </div>
+                        `;
+                    }).join('')}
                 </div>
+                ${isAnswered ? `
+                    <div class="explanation">
+                        <div class="explanation-header">
+                            <i class="fas fa-lightbulb"></i>
+                            <strong>Explanation:</strong>
+                        </div>
+                        <p>${question.explanation}</p>
+                        ${userAnswers[index] === question.correct ? 
+                            '<div class="feedback correct-feedback"><i class="fas fa-check"></i> Correct!</div>' : 
+                            '<div class="feedback incorrect-feedback"><i class="fas fa-times"></i> Incorrect. The correct answer is: ' + question.options[question.correct] + '</div>'
+                        }
+                    </div>
+                ` : ''}
             </div>
         `;
 
-        // Add click handlers to options
-        const options = questionsContainer.querySelectorAll('.option');
-        options.forEach((option, optionIndex) => {
-            option.addEventListener('click', () => {
-                // Remove previous selection
-                options.forEach(opt => opt.classList.remove('selected'));
-                // Add selection to clicked option
-                option.classList.add('selected');
-                // Store answer
-                userAnswers[index] = optionIndex;
-                
-                // Update navigation buttons
-                updateNavigationButtons();
+        // Add click handlers to options only if not answered
+        if (!isAnswered) {
+            const options = questionsContainer.querySelectorAll('.option');
+            options.forEach((option, optionIndex) => {
+                option.addEventListener('click', () => {
+                    // Store answer
+                    userAnswers[index] = optionIndex;
+                    
+                    // Re-render question with explanation
+                    showQuestion(index);
+                    
+                    // Update navigation buttons
+                    updateNavigationButtons();
+                });
             });
-        });
+        }
 
         // Update progress
         updateProgress();
@@ -154,6 +185,56 @@ function initializeQuiz() {
         }
 
         document.getElementById('results-message').textContent = message;
+
+        // Add detailed review section
+        const reviewHtml = `
+            <div class="quiz-review">
+                <h3><i class="fas fa-list-check"></i> Detailed Review</h3>
+                <div class="review-questions">
+                    ${quizData.questions.map((question, index) => {
+                        const isCorrect = userAnswers[index] === question.correct;
+                        const userAnswer = question.options[userAnswers[index]];
+                        const correctAnswer = question.options[question.correct];
+                        
+                        return `
+                            <div class="review-question ${isCorrect ? 'correct' : 'incorrect'}">
+                                <div class="review-header">
+                                    <span class="question-number">Question ${index + 1}</span>
+                                    <span class="result-icon">
+                                        ${isCorrect ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>'}
+                                    </span>
+                                </div>
+                                <h4>${question.question}</h4>
+                                <div class="answer-comparison">
+                                    <div class="user-answer">
+                                        <strong>Your answer:</strong> ${userAnswer}
+                                        ${isCorrect ? '<span class="correct-badge">✓</span>' : '<span class="incorrect-badge">✗</span>'}
+                                    </div>
+                                    ${!isCorrect ? `
+                                        <div class="correct-answer">
+                                            <strong>Correct answer:</strong> ${correctAnswer}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                <div class="explanation-text">
+                                    <strong>Explanation:</strong> ${question.explanation}
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `;
+
+        // Insert review section before the retry buttons
+        const resultsDetails = document.querySelector('.results-details');
+        const existingReview = resultsDetails.querySelector('.quiz-review');
+        if (existingReview) {
+            existingReview.remove();
+        }
+        
+        const buttons = resultsDetails.querySelector('.btn');
+        buttons.parentNode.insertAdjacentHTML('beforebegin', reviewHtml);
 
         // Hide quiz content and show results
         document.querySelector('.quiz-content').style.display = 'none';
