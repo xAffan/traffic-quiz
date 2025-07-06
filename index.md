@@ -9,7 +9,7 @@ description: Test your traffic safety knowledge and learn essential driving tips
         <h1>🚦 Traffic Safety Hub</h1>
         <p>Test your knowledge of traffic rules and learn essential driving tips to become a safer, more confident driver on the road.</p>
         <div class="hero-actions">
-            <a href="{{ '/quiz/' | relative_url }}" class="btn btn-primary">Start Quiz</a>
+            <a href="{{ '/quizzes/' | relative_url }}" class="btn btn-primary">Start Quiz</a>
             <a href="{{ '/about/' | relative_url }}" class="btn btn-outline">Learn More</a>
         </div>
     </div>
@@ -29,14 +29,14 @@ description: Test your traffic safety knowledge and learn essential driving tips
             
             <div class="feature-card">
                 <div class="feature-icon">📚</div>
-                <h3>Expert Tips</h3>
-                <p>Learn from safety experts with practical advice, real-world scenarios, and best practices for defensive driving.</p>
+                <h3>Educational Tips</h3>
+                <p>Learn with practical advice, real-world scenarios, and best practices for defensive driving and road safety.</p>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">🎯</div>
-                <h3>Track Progress</h3>
-                <p>Monitor your improvement over time and identify areas where you can enhance your traffic safety knowledge.</p>
+                <h3>Immediate Feedback</h3>
+                <p>Get instant results and detailed explanations to help you understand traffic safety concepts more effectively.</p>
             </div>
             
             <div class="feature-card">
@@ -49,12 +49,6 @@ description: Test your traffic safety knowledge and learn essential driving tips
                 <div class="feature-icon">⚡</div>
                 <h3>Quick Learning</h3>
                 <p>Short, focused lessons and quizzes that fit into your busy schedule while maximizing learning impact.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🏆</div>
-                <h3>Achievement System</h3>
-                <p>Earn badges and track your achievements as you master different aspects of traffic safety and defensive driving.</p>
             </div>
         </div>
     </div>

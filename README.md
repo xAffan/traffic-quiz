@@ -1,18 +1,18 @@
 # 🚦 Traffic Safety Hub
 
-A comprehensive traffic safety education website built with Jekyll, featuring interactive quizzes, expert safety tips, and modern responsive design.
+A comprehensive traffic safety education website built with Jekyll, featuring interactive quizzes, educational safety tips, and modern responsive design.
 
 ## 🌟 Features
 
 ### Interactive Quizzes
 - **Multiple Choice Questions**: Carefully crafted questions covering all aspects of traffic safety
 - **Instant Feedback**: Immediate results with detailed explanations for each answer
-- **Progress Tracking**: Visual progress indicators and scoring system
+- **Visual Progress**: Progress indicators within each quiz session
 - **Difficulty Levels**: Quizzes ranging from basic to advanced topics
 - **Retake Capability**: Users can retake quizzes to reinforce learning
 
 ### Safety Blog
-- **Expert Articles**: In-depth guides on defensive driving, weather safety, and road signs
+- **Educational Articles**: In-depth guides on defensive driving, weather safety, and road signs
 - **Practical Tips**: Real-world advice that drivers can immediately apply
 - **Regular Updates**: Fresh content covering the latest in traffic safety
 - **Easy Navigation**: Well-organized topics and search functionality

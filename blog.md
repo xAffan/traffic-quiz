@@ -8,7 +8,7 @@ description: Expert tips, guides, and insights for safer driving
     <div class="container">
         <header class="text-center mb-3">
             <h1>📰 Traffic Safety Blog</h1>
-            <p>Stay informed with the latest safety tips, driving techniques, and expert insights to help you become a safer, more confident driver.</p>
+            <p>Stay informed with the latest safety tips, driving techniques, and educational insights to help you become a safer, more confident driver.</p>
         </header>
 
         {% if site.posts.size > 0 %}

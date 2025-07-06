@@ -20,7 +20,7 @@ description: Learn about our mission to promote traffic safety through education
                 <ul style="text-align: left; margin: 1rem 0;">
                     <li><strong>Interactive Quizzes</strong>: Test your knowledge with comprehensive quizzes covering traffic rules, road signs, and driving scenarios</li>
                     <li><strong>Educational Content</strong>: Learn from articles and tips about defensive driving, weather conditions, and road safety</li>
-                    <li><strong>Progress Tracking</strong>: Monitor your learning progress and identify areas for improvement</li>
+                    <li><strong>Instant Feedback</strong>: Get immediate results and detailed explanations for quiz questions</li>
                     <li><strong>Mobile-Friendly Design</strong>: Access content easily from any device</li>
                 </ul>
                 

@@ -120,7 +120,7 @@ description: Test your traffic safety knowledge with our comprehensive collectio
             <div class="feature-card">
                 <div class="feature-icon">🔄</div>
                 <h3>Retake and Improve</h3>
-                <p>Retake quizzes as many times as you want to reinforce your learning and track improvement.</p>
+                <p>Retake quizzes as many times as you want to reinforce your learning and deepen your understanding.</p>
             </div>
         </div>
     </div>
