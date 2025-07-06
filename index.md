@@ -40,12 +40,6 @@ description: Test your traffic safety knowledge and learn essential driving tips
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">🚗</div>
-                <h3>Real Scenarios</h3>
-                <p>Practice with realistic driving situations and learn how to handle challenging road conditions safely.</p>
-            </div>
-            
-            <div class="feature-card">
                 <div class="feature-icon">⚡</div>
                 <h3>Quick Learning</h3>
                 <p>Short, focused lessons and quizzes that fit into your busy schedule while maximizing learning impact.</p>
