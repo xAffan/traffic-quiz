@@ -56,23 +56,23 @@ description: Test your traffic safety knowledge and learn essential driving tips
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">🚥</div>
-                <h3><a href="{{ '/quizzes/basic-traffic-rules/' | relative_url }}">Basic Traffic Rules</a></h3>
+                <h3><a href="{{ '/quiz/basic-traffic-rules/' | relative_url }}">Basic Traffic Rules</a></h3>
                 <p>Essential traffic rules every driver should know. Perfect for new drivers or a refresher course.</p>
-                <a href="{{ '/quizzes/basic-traffic-rules/' | relative_url }}" class="btn btn-primary">Start Quiz</a>
+                <a href="{{ '/quiz/basic-traffic-rules/' | relative_url }}" class="btn btn-primary">Start Quiz</a>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">🛡️</div>
-                <h3><a href="{{ '/quizzes/defensive-driving/' | relative_url }}">Defensive Driving</a></h3>
+                <h3><a href="{{ '/quiz/defensive-driving/' | relative_url }}">Defensive Driving</a></h3>
                 <p>Learn advanced techniques to anticipate and avoid potential road hazards and dangerous situations.</p>
-                <a href="{{ '/quizzes/defensive-driving/' | relative_url }}" class="btn btn-primary">Start Quiz</a>
+                <a href="{{ '/quiz/defensive-driving/' | relative_url }}" class="btn btn-primary">Start Quiz</a>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">🌧️</div>
-                <h3><a href="{{ '/quizzes/weather-driving/' | relative_url }}">Weather Conditions</a></h3>
+                <h3><a href="{{ '/quiz/weather-driving/' | relative_url }}">Weather Conditions</a></h3>
                 <p>Master driving in challenging weather conditions including rain, snow, fog, and extreme temperatures.</p>
-                <a href="{{ '/quizzes/weather-driving/' | relative_url }}" class="btn btn-primary">Start Quiz</a>
+                <a href="{{ '/quiz/weather-driving/' | relative_url }}" class="btn btn-primary">Start Quiz</a>
             </div>
         </div>
     </div>
